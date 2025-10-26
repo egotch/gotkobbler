@@ -19,6 +19,8 @@ dist-ssr/
 .env
 .env.local
 .env.*.local
+# Keep examples
+!*.env.example
 
 # Database files
 *.db
