@@ -1,0 +1,77 @@
+version: '3'
+
+vars:
+  BACKEND_DIR: backend
+  BACKEND_BIN: "{{.BACKEND_DIR}}/bin/server"
+
+tasks:
+  # Database tasks
+  db:up:
+    desc: Start PostgreSQL in Docker
+    cmds:
+      - docker compose up -d
+      - echo "✅ PostgreSQL started on localhost:5432"
+
+  db:down:
+    desc: Stop PostgreSQL
+    cmds:
+      - docker compose down
+      - echo "📪 PostgreSQL stopped"
+
+  db:logs:
+    desc: View PostgreSQL logs
+    cmds:
+      - docker compose logs -f postgres
+
+  db:psql:
+    desc: Connect to PostgreSQL shell
+    cmds:
+      - docker compose exec postgres psql -U gotkobbler -d gotkobbler_dev
+
+  # Backend tasks
+  backend:build:
+    desc: Build backend server
+    dir: "{{.BACKEND_DIR}}"
+    cmds:
+      - go build -o bin/server cmd/server/main.go
+      - echo "✅ Backend built at {{.BACKEND_BIN}}"
+
+  backend:run:
+    desc: Run backend server
+    deps: [backend:build]
+    dir: "{{.BACKEND_DIR}}"
+    cmds:
+      - ./bin/server
+
+  backend:dev:
+    desc: Run backend with auto-reload (using air)
+    dir: "{{.BACKEND_DIR}}"
+    cmds:
+      - air
+    # Note: requires 'air' installed: go install github.com/cosmtrek/air@latest
+
+  backend:test:
+    desc: Run backend tests
+    dir: "{{.BACKEND_DIR}}"
+    cmds:
+      - go test -v ./...
+
+  # Combined tasks
+  dev:
+    desc: Start everything for development
+    cmds:
+      - task: db:up
+      - task: backend:build
+      - task: backend:run
+    silent: true
+
+  health:
+    desc: Check if backend is healthy
+    cmds:
+      - curl -s http://localhost:8080/api/health | jq .
+
+  # Default task
+  default:
+    desc: Show available tasks
+    cmds:
+      - task --list
