@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/egotch/gotkobbler/backend/internal/config"
-	"github.com/egotch/gotkobbler/backend/internal/database"
-	"github.com/egotch/gotkobbler/backend/internal/router"
-	"github.com/egotch/gotkobbler/backend/internal/server"
+	"github.com/egotch/gotkobbler/internal/config"
+	"github.com/egotch/gotkobbler/internal/database"
+	"github.com/egotch/gotkobbler/internal/router"
+	"github.com/egotch/gotkobbler/internal/server"
 )
 
 type App struct {

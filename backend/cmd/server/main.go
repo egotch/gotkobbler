@@ -9,8 +9,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/egotch/gotkobbler/backend/internal/app"
-	"github.com/egotch/gotkobbler/backend/internal/config"
+	"github.com/egotch/gotkobbler/internal/app"
+	"github.com/egotch/gotkobbler/internal/config"
 	"github.com/gin-gonic/gin"
 )
 

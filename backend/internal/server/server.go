@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/egotch/gotkobbler/backend/internal/config"
+	"github.com/egotch/gotkobbler/internal/config"
 	"github.com/gin-gonic/gin"
 )
 

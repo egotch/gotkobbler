@@ -1,9 +1,9 @@
 package router
 
 import (
-	"github.com/egotch/gotkobbler/backend/internal/database"
-	"github.com/egotch/gotkobbler/backend/internal/handlers"
-	"github.com/egotch/gotkobbler/backend/internal/middleware"
+	"github.com/egotch/gotkobbler/internal/database"
+	"github.com/egotch/gotkobbler/internal/handlers"
+	"github.com/egotch/gotkobbler/internal/middleware"
 	"github.com/gin-gonic/gin"
 )
 

@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/egotch/gotkobbler/backend/internal/config"
+	"github.com/egotch/gotkobbler/internal/config"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 

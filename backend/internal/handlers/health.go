@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/egotch/gotkobbler/backend/internal/database"
+	"github.com/egotch/gotkobbler/internal/database"
 	"github.com/gin-gonic/gin"
 )
 
